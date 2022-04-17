@@ -19,32 +19,42 @@ class Counter extends Component {
 		const { counter, onDelete, onChangeValue } = this.props;
 		return (
 			<React.Fragment>
-				<button
-					onClick={() => onDelete(counter.id)}
-					className='btn btn-danger btn-sm m-2'>
-					Delete
-				</button>
-				<button
-					className='btn btn-secondary btn-sm m-2'
-					onClick={() => {
-						onChangeValue(counter, "increment");
-					}}>
-					+
-				</button>
-				<button
-					className='btn btn-secondary btn-sm m-2'
-					onClick={() => {
-						onChangeValue(counter, "decrement");
-					}}>
-					-
-				</button>
-				<span className={this.getBadgeClass()}>{this.formatCount()}</span>
-				<hr></hr>
-				{/* <div>{this.renderTags()}</div>
+				<div className='row'>
+					<div className='col'>
+						<button
+							onClick={() => onDelete(counter.id)}
+							className='btn btn-danger btn-sm m-2'>
+							x
+						</button>
+						<button
+							className='btn btn-secondary btn-sm m-2'
+							onClick={() => {
+								onChangeValue(counter, "increment");
+							}}>
+							+
+						</button>
+						<button
+							className='btn btn-secondary btn-sm m-2'
+							onClick={() => {
+								onChangeValue(counter, "decrement");
+							}}
+							disabled={this.props.counter.value === 0 ? "disabled" : ""}>
+							-
+						</button>
+						<span className={this.getBadgeClass()}>{this.formatCount()}</span>
+					</div>
+
+					<hr></hr>
+					{/* <div>{this.renderTags()}</div>
 				<div>{this.createRandomImage()}</div> */}
+				</div>
 			</React.Fragment>
 		);
 	}
+
+	componentDidUpdate(prevProps, prevState) {}
+
+	componentWillUnmount() {}
 
 	getBadgeClass() {
 		const { value } = this.props.counter;

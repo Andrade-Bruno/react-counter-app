@@ -52,8 +52,6 @@ class App extends Component {
 		} else {
 			if (newCounters[index].value > 0) {
 				newCounters[index].value--;
-			} else {
-				alert("Sorry, you can't decrease anymore.");
 			}
 		}
 		this.setState({ counters: newCounters });
